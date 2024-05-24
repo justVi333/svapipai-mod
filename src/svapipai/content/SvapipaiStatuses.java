@@ -14,7 +14,7 @@ public class SvapipaiStatuses
     {
         cloggedMechanism = new StatusEffect("clogged-mechanism")
         {{
-            localizedName = "Clogged Mechanism";
+            //localizedName = "Clogged Mechanism";
             reloadMultiplier = 0.8f;
             speedMultiplier = 0.65f;
             color = Color.valueOf("c8a58f");

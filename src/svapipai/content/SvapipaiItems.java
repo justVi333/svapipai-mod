@@ -11,7 +11,7 @@ public class SvapipaiItems
     {
         palladium = new Item("palladium", Color.valueOf("f37f6f"))
         {{
-            localizedName = "Palladium";
+            //localizedName = "Palladium";
             hardness = 4;
             cost = 1.1f;
         }};

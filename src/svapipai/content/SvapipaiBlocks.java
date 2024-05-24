@@ -12,6 +12,7 @@ import mindustry.world.*;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.*;
+import mindustry.world.blocks.legacy.LegacyUnitFactory;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.units.UnitFactory;
@@ -38,7 +39,7 @@ public class SvapipaiBlocks
     {
         palladiumOre = new OreBlock("ore-palladium", palladium)
         {{
-                localizedName = "Palladium Ore";
+                //localizedName = "Palladium Ore";
                 oreDefault = false;
                 oreThreshold = 0.93f;
                 oreScale = 25.7f;
@@ -46,7 +47,7 @@ public class SvapipaiBlocks
 
         leadWall = new Wall("lead-wall")
         {{
-            localizedName = "Lead Wall";
+            //localizedName = "Lead Wall";
             health = 320;
             size = 1;
             requirements(Category.defense, with(
@@ -55,7 +56,7 @@ public class SvapipaiBlocks
         }};
         leadWallLarge = new Wall("lead-wall-large")
         {{
-            localizedName = "Large Lead Wall";
+            //localizedName = "Large Lead Wall";
             health = 1280;
             size = 2;
             requirements(Category.defense, with(
@@ -65,7 +66,7 @@ public class SvapipaiBlocks
 
         palladiumWall = new Wall("palladium-wall")
         {{
-            localizedName = "Palladium Wall";
+            //localizedName = "Palladium Wall";
             health = 800;
             size = 1;
             requirements(Category.defense, with(
@@ -84,7 +85,7 @@ public class SvapipaiBlocks
 
         stoneCrusher = new WallCrafter("stone-crusher")
         {{
-            localizedName = "Stone Crusher";
+            //localizedName = "Stone Crusher";
             health = 160;
             size = 2;
             drillTime = 360;
@@ -102,7 +103,7 @@ public class SvapipaiBlocks
 
         strongPowerNode = new PowerNode("strong-power-node")
         {{
-            localizedName = "Strong Power Node";
+            //localizedName = "Strong Power Node";
             health = 300;
             size = 2;
             maxNodes = 20;
@@ -116,7 +117,7 @@ public class SvapipaiBlocks
 
         spreader = new ItemTurret("spreader")
         {{
-            localizedName = "Spreader";
+            //localizedName = "Spreader";
             health = 800;
             size = 2;
             shake = 0.5f;
@@ -181,9 +182,9 @@ public class SvapipaiBlocks
 
         complexConstructor = new UnitFactory("complex-constructor")
         {{
-            localizedName = "Complex Constructor";
+            //localizedName = "Complex Constructor";
             health = 1200;
-            size = 2;
+            size = 3;
             floating = true;
 
             consumePower(3f);

@@ -23,7 +23,7 @@ public class SvapipaiUnits
     {
         palladiumCrawler = new UnitType("palladium-crawler") //legs
         {{
-            localizedName = "Palladium Crawler";
+            //localizedName = "Palladium Crawler";
             health = 600;
             speed = 1.2f;
             armor = 2;
@@ -44,7 +44,7 @@ public class SvapipaiUnits
             targetAir = true;
             outlineColor = Color.valueOf("2d2f39"); //Pal.darkOutline
 
-            weapons.add(new Weapon("palladium-crawler-weapon")
+            weapons.add(new Weapon("svapipai-palladium-crawler-weapon")
             {{
                 x = 5;
                 y = 0;
@@ -82,7 +82,7 @@ public class SvapipaiUnits
 
         palladiumPiranha = new UnitType("palladium-piranha") //naval
         {{
-            localizedName = "Palladium Piranha";
+            //localizedName = "Palladium Piranha";
             health = 1200;
             speed = 1f;
             armor = 2;
@@ -96,7 +96,7 @@ public class SvapipaiUnits
             targetGround = true;
             outlineColor = Color.valueOf("2d2f39"); //Pal.darkOutline
 
-            weapons.add(new Weapon("palladium-piranha-weapon")
+            weapons.add(new Weapon("svapipai-palladium-piranha-weapon")
             {{
                 x = 5.5f;
                 y = -1;
@@ -136,7 +136,7 @@ public class SvapipaiUnits
 
         palladiumSparrow = new UnitType("palladium-sparrow") //flying
         {{
-            localizedName = "Palladium Sparrow";
+            //localizedName = "Palladium Sparrow";
             health = 400;
             speed = 1.6f;
             armor = 2;
@@ -151,7 +151,8 @@ public class SvapipaiUnits
             targetGround = true;
             outlineColor = Color.valueOf("2d2f39"); //Pal.darkOutline
 
-            weapons.add(new Weapon("palladium-sparrow-weapon")
+            weapons.add(
+            new Weapon("svapipai-palladium-sparrow-weapon")
             {{
                 x = 4f;
                 y = -0.5f;
@@ -178,7 +179,8 @@ public class SvapipaiUnits
                     backColor = Color.valueOf("f37f6f");
                     frontColor = Color.valueOf("e8bda4");
                 }};
-            }});
+            }}
+            );
 
             abilities.add(new ShieldRegenFieldAbility(20, 80, 60f * 5, 20f));
 
@@ -189,7 +191,7 @@ public class SvapipaiUnits
 
         palladiumCaterpillar = new UnitType("palladium-caterpillar") //flying
         {{
-            localizedName = "Palladium Caterpillar";
+            //localizedName = "Palladium Caterpillar";
             health = 1400;
             speed = 1f;
             armor = 2;
@@ -207,7 +209,7 @@ public class SvapipaiUnits
             targetGround = true;
             outlineColor = Color.valueOf("2d2f39"); //Pal.darkOutline
 
-            weapons.add(new Weapon("palladium-caterpillar-weapon")
+            weapons.add(new Weapon("svapipai-palladium-caterpillar-weapon")
             {{
                 x = 5f;
                 y = 0f;
