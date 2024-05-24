@@ -23,6 +23,7 @@ public class SvapipaiUnits
     {
         palladiumCrawler = new UnitType("palladium-crawler") //legs
         {{
+            localizedName = "Palladium Crawler";
             health = 600;
             speed = 1.2f;
             armor = 2;
@@ -81,6 +82,7 @@ public class SvapipaiUnits
 
         palladiumPiranha = new UnitType("palladium-piranha") //naval
         {{
+            localizedName = "Palladium Piranha";
             health = 1200;
             speed = 1f;
             armor = 2;
@@ -134,6 +136,7 @@ public class SvapipaiUnits
 
         palladiumSparrow = new UnitType("palladium-sparrow") //flying
         {{
+            localizedName = "Palladium Sparrow";
             health = 400;
             speed = 1.6f;
             armor = 2;
@@ -186,6 +189,7 @@ public class SvapipaiUnits
 
         palladiumCaterpillar = new UnitType("palladium-caterpillar") //flying
         {{
+            localizedName = "Palladium Caterpillar";
             health = 1400;
             speed = 1f;
             armor = 2;
@@ -212,6 +216,7 @@ public class SvapipaiUnits
                 inaccuracy = 15;
                 shake = 1;
                 rotateSpeed = 4;
+                rotate = true;
                 top = false;
                 mirror = true;
                 alternate = true;

@@ -9,6 +9,7 @@ import mindustry.entities.bullet.BasicBulletType;
 import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.power.PowerNode;
@@ -27,6 +28,7 @@ public class SvapipaiBlocks
 {
     public static Block
     /*ores*/ palladiumOre,
+    /*defense walls*/leadWall, leadWallLarge, palladiumWall, palladiumWallLarge,
     /*drills*/ stoneCrusher,
     /*power nodes*/ strongPowerNode,
     /*turrets*/ spreader,
@@ -40,6 +42,44 @@ public class SvapipaiBlocks
                 oreDefault = false;
                 oreThreshold = 0.93f;
                 oreScale = 25.7f;
+        }};
+
+        leadWall = new Wall("lead-wall")
+        {{
+            localizedName = "Lead Wall";
+            health = 320;
+            size = 1;
+            requirements(Category.defense, with(
+                    lead,6
+            ));
+        }};
+        leadWallLarge = new Wall("lead-wall-large")
+        {{
+            localizedName = "Large Lead Wall";
+            health = 1280;
+            size = 2;
+            requirements(Category.defense, with(
+                    lead,24
+            ));
+        }};
+
+        palladiumWall = new Wall("palladium-wall")
+        {{
+            localizedName = "Palladium Wall";
+            health = 800;
+            size = 1;
+            requirements(Category.defense, with(
+                    palladium,6
+            ));
+        }};
+        palladiumWallLarge = new Wall("palladium-wall-large")
+        {{
+            localizedName = "Large Palladium Wall";
+            health = 3200;
+            size = 2;
+            requirements(Category.defense, with(
+                    palladium,24
+            ));
         }};
 
         stoneCrusher = new WallCrafter("stone-crusher")
@@ -150,7 +190,8 @@ public class SvapipaiBlocks
             consumeLiquid(cryofluid, 0.25f);
 
 
-            requirements(Category.units, with(
+            requirements(Category.units, with
+            (
                     palladium,400,
                     thorium,350,
                     silicon,500,

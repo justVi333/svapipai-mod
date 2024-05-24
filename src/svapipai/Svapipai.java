@@ -7,7 +7,8 @@ import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 import svapipai.content.*;
 
-public class Svapipai extends Mod{
+public class Svapipai extends Mod
+{
 
     public Svapipai()
     {
