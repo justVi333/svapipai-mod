@@ -1,25 +1,36 @@
-#the mod name as displayed in-game
 displayName: "Svapipai"
 
-#the internal name of your mod
 name: "svapipai"
 
-#your name
 author: "DotVi"
 
-#the fully qualified main class of the mod
 main: "svapipai.Svapipai"
 
-#the mod description as seen in the mod dialog
-description: "A Mindustry Java mod template."
+subtitle: "New mod, 0.1v"
 
-#the mod version
+description:
+'''
+My first mod :)
+
+
+The mod adds:
+- ore;
+- turrets and other defense blocks;
+- units;
+- some production and power blocks.
+
+Languages:
+- en;
+- ru.
+
+
+Future plans include adding more content for the new ore and add new planet.
+'''
+
 version: 0.1
 
 repo: "justVi333/svapipai-mod"
 
-#the minimum game build required to run this mod
 minGameVersion: 146
 
-#this is a java mod
 java: true

@@ -16,6 +16,7 @@ import mindustry.world.blocks.legacy.LegacyUnitFactory;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.units.UnitFactory;
+import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
 import static mindustry.content.Items.*;
@@ -31,6 +32,7 @@ public class SvapipaiBlocks
     /*ores*/ palladiumOre,
     /*defense walls*/leadWall, leadWallLarge, palladiumWall, palladiumWallLarge,
     /*drills*/ stoneCrusher,
+    /*production*/ cryofluidFactory,
     /*power nodes*/ strongPowerNode,
     /*turrets*/ spreader,
     /*units*/ complexConstructor;
@@ -75,7 +77,7 @@ public class SvapipaiBlocks
         }};
         palladiumWallLarge = new Wall("palladium-wall-large")
         {{
-            localizedName = "Large Palladium Wall";
+            //localizedName = "Large Palladium Wall";
             health = 3200;
             size = 2;
             requirements(Category.defense, with(
@@ -99,6 +101,33 @@ public class SvapipaiBlocks
                     lead,60,
                     graphite,30
             ));
+        }};
+
+        cryofluidFactory = new GenericCrafter("cryofluid-factory")
+        {{
+            outputLiquid = new LiquidStack(cryofluid, 48f / 60f);
+            size = 3;
+            hasPower = true;
+            hasItems = true;
+            hasLiquids = true;
+            rotate = false;
+            solid = true;
+            outputsLiquid = true;
+            //envEnabled = Env.any;
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(water), new DrawLiquidTile(cryofluid){{drawLiquidLight = true;}}, new DrawDefault());
+            liquidCapacity = 96f;
+            craftTime = 120;
+            lightLiquid = cryofluid;
+
+            consumePower(4f);
+            consumeItem(titanium, 4);
+            consumeLiquid(water, 36f / 60f);
+
+            requirements(Category.crafting, with(
+                    palladium, 275,
+                    lead, 650,
+                    silicon, 300,
+                    titanium, 450));
         }};
 
         strongPowerNode = new PowerNode("strong-power-node")
