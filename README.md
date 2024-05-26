@@ -1,4 +1,7 @@
 # Svapipai mod
+
+![Logo](assets/icon.png)
+
 My first mod :)
 
 [My pages on social networks](https://tapy.me/dotvi)

@@ -3,14 +3,17 @@ package svapipai.content;
 import arc.graphics.Color;
 import arc.struct.OrderedMap;
 import arc.struct.Seq;
+import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
-import mindustry.entities.bullet.BasicBulletType;
+import mindustry.entities.bullet.*;
 import mindustry.gen.*;
+import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.defense.turrets.Turret;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.legacy.LegacyUnitFactory;
 import mindustry.world.blocks.power.PowerNode;
@@ -42,9 +45,9 @@ public class SvapipaiBlocks
         palladiumOre = new OreBlock("ore-palladium", palladium)
         {{
                 //localizedName = "Palladium Ore";
-                oreDefault = false;
-                oreThreshold = 0.93f;
-                oreScale = 25.7f;
+                oreDefault = true;
+                oreThreshold = 0.894f;
+                oreScale = 25.380953f;
         }};
 
         leadWall = new Wall("lead-wall")
@@ -105,7 +108,7 @@ public class SvapipaiBlocks
 
         cryofluidFactory = new GenericCrafter("cryofluid-factory")
         {{
-            outputLiquid = new LiquidStack(cryofluid, 48f / 60f);
+            health = 420;
             size = 3;
             hasPower = true;
             hasItems = true;
@@ -114,6 +117,7 @@ public class SvapipaiBlocks
             solid = true;
             outputsLiquid = true;
             //envEnabled = Env.any;
+            outputLiquid = new LiquidStack(cryofluid, 48f / 60f);
             drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(water), new DrawLiquidTile(cryofluid){{drawLiquidLight = true;}}, new DrawDefault());
             liquidCapacity = 96f;
             craftTime = 120;
@@ -237,21 +241,92 @@ public class SvapipaiBlocks
             );
         }};
 
-        /*Blocks.scatter.stats.add(Stat.ammo, StatValues.ammo(OrderedMap.of
-        (
-                palladium, new BasicBulletType(6f, 12) {{
-                width = 8f;
-                height = 10f;
-                lifetime = 60f;
-                ammoMultiplier = 2;
-                reloadMultiplier = 0.75f;
-                shootEffect = Fx.shootSmall;
-                hitEffect = Fx.flakExplosion;
-                splashDamage = 80;
-                splashDamageRadius = 28;
-                backColor = Color.valueOf("f37f6f");
-                frontColor = Color.valueOf("e8bda4");
-                }}
-        )));*/
+
+        //VANILLA OVERRIDES
+
+        for(int i = 0; i < Vars.content.blocks().size; i ++)
+        {
+            Block _turret = Vars.content.blocks().get(i);
+            if(_turret instanceof ItemTurret)
+            {
+                if(_turret == Blocks.scatter)
+                {
+                    ((ItemTurret) _turret).ammo
+                    (
+                        scrap, new FlakBulletType(4f, 3)
+                        {{
+                            lifetime = 60f;
+                            ammoMultiplier = 5f;
+                            shootEffect = Fx.shootSmall;
+                            reloadMultiplier = 0.5f;
+                            width = 6f;
+                            height = 8f;
+                            hitEffect = Fx.flakExplosion;
+                            splashDamage = 22f * 1.5f;
+                            splashDamageRadius = 24f;
+                        }},
+                        lead, new FlakBulletType(4.2f, 3)
+                        {{
+                            lifetime = 60f;
+                            ammoMultiplier = 4f;
+                            shootEffect = Fx.shootSmall;
+                            width = 6f;
+                            height = 8f;
+                            hitEffect = Fx.flakExplosion;
+                            splashDamage = 27f * 1.5f;
+                            splashDamageRadius = 15f;
+                        }},
+                        metaglass, new FlakBulletType(4f, 3)
+                        {{
+                            lifetime = 60f;
+                            ammoMultiplier = 5f;
+                            shootEffect = Fx.shootSmall;
+                            reloadMultiplier = 0.8f;
+                            width = 6f;
+                            height = 8f;
+                            hitEffect = Fx.flakExplosion;
+                            splashDamage = 30f * 1.5f;
+                            splashDamageRadius = 20f;
+                            fragBullets = 6;
+                            fragBullet = new BasicBulletType(3f, 5){{
+                                width = 5f;
+                                height = 12f;
+                                shrinkY = 1f;
+                                lifetime = 20f;
+                                backColor = Pal.gray;
+                                frontColor = Color.white;
+                                despawnEffect = Fx.none;
+                                collidesGround = false;
+                            }};
+                        }},
+                        palladium, new FlakBulletType(6f, 12)
+                        {{
+                            lifetime = 60f;
+                            ammoMultiplier = 5f;
+                            shootEffect = Fx.shootSmall;
+                            reloadMultiplier = 0.65f;
+                            width = 8f;
+                            height = 10f;
+                            hitEffect = Fx.flakExplosion;
+                            splashDamage = 70;
+                            splashDamageRadius = 30f;
+                            fragBullets = 6;
+                            backColor = Color.valueOf("f37f6f");
+                            frontColor = Color.valueOf("e8bda4");
+                            fragBullet = new BasicBulletType(3f, 5){{
+                                width = 5f;
+                                height = 12f;
+                                shrinkY = 1f;
+                                lifetime = 20f;
+                                despawnEffect = Fx.none;
+                                collidesGround = false;
+                                backColor = Color.valueOf("f37f6f");
+                                frontColor = Color.valueOf("e8bda4");
+                            }};
+                        }}
+                    );
+                }
+            }
+        }
     }
 }
