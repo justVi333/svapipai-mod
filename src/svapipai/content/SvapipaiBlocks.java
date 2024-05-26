@@ -33,7 +33,7 @@ public class SvapipaiBlocks
 {
     public static Block
     /*ores*/ palladiumOre,
-    /*defense walls*/leadWall, leadWallLarge, palladiumWall, palladiumWallLarge,
+    /*defense walls*/ leadWall, leadWallLarge, palladiumWall, palladiumWallLarge,
     /*drills*/ stoneCrusher,
     /*production*/ cryofluidFactory,
     /*power nodes*/ strongPowerNode,
@@ -237,7 +237,8 @@ public class SvapipaiBlocks
                 new UnitPlan(palladiumCrawler, 60 * 20f, with(palladium, 50, silicon, 60, lead, 90)),
                 new UnitPlan(palladiumPiranha, 60 * 20f, with(palladium, 50, silicon, 60, metaglass, 40)),
                 new UnitPlan(palladiumSparrow, 60 * 20f, with(palladium, 50, silicon, 60, graphite, 50)),
-                new UnitPlan(palladiumCaterpillar, 60 * 20f, with(palladium, 50, silicon, 60, titanium, 80))
+                new UnitPlan(palladiumCaterpillar, 60 * 20f, with(palladium, 50, silicon, 60, titanium, 80)),
+                new UnitPlan(repairer, 60 * 30f, with(palladium, 70, silicon, 70, graphite, 80, lead, 100))
             );
         }};
 

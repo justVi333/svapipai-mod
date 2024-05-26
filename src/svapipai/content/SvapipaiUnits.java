@@ -2,22 +2,22 @@ package svapipai.content;
 
 import arc.graphics.Color;
 import arc.struct.ObjectSet;
+import mindustry.ai.*;
 import mindustry.content.Fx;
 import mindustry.entities.abilities.*;
-import mindustry.entities.bullet.BasicBulletType;
-import mindustry.gen.CrawlUnit;
-import mindustry.gen.LegsUnit;
-import mindustry.gen.UnitEntity;
-import mindustry.gen.UnitWaterMove;
-import mindustry.type.UnitType;
-import mindustry.type.Weapon;
+import mindustry.entities.bullet.*;
+import mindustry.gen.*;
+import mindustry.type.*;
+import svapipai.ai.*;
+import svapipai.override.HealerUnitType;
 
 import static mindustry.content.StatusEffects.*;
 
 public class SvapipaiUnits
 {
     public static UnitType
-    /*palladium*/ palladiumCrawler, palladiumPiranha, palladiumSparrow, palladiumCaterpillar;
+    /*palladium*/ palladiumCrawler, palladiumPiranha, palladiumSparrow, palladiumCaterpillar,
+    repairer;
 
     public static void load()
     {
@@ -33,10 +33,11 @@ public class SvapipaiUnits
             rotateSpeed = 6;
             legCount = 6;
             legLength = 12;
-            legForwardScl = 0.6f;
+            legForwardScl = 0.8f;
             legMoveSpace = 1.4f;
             legGroupSize = 3;
             legMinLength = 0.2f;
+            legMaxLength = 1f;
             legPhysicsLayer = false;
             hovering = true;
             groundLayer = 73;
@@ -73,7 +74,7 @@ public class SvapipaiUnits
                 }};
             }});
 
-            abilities.add(new ShieldRegenFieldAbility(30, 90, 60f * 5, 20f));
+            abilities.add(new ShieldRegenFieldAbility(20, 80, 60f * 5, 20f));
 
             immunities = ObjectSet.with(burning, melting);
 
@@ -127,7 +128,7 @@ public class SvapipaiUnits
                 }};
             }});
 
-            abilities.add(new ShieldRegenFieldAbility(40, 120, 60f * 5, 20f));
+            abilities.add(new ShieldRegenFieldAbility(20, 100, 60f * 5, 20f));
 
             immunities = ObjectSet.with(burning, melting);
 
@@ -240,11 +241,42 @@ public class SvapipaiUnits
                 }};
             }});
 
-            abilities.add(new ShieldRegenFieldAbility(60, 180, 60f * 4, 20f));
+            abilities.add(new ShieldRegenFieldAbility(40, 140, 60f * 4, 20f));
 
             immunities = ObjectSet.with(burning, melting);
 
             constructor = CrawlUnit::create;
+        }};
+
+        repairer = new HealerUnitType("repairer") //flying
+        {{
+            health = 800;
+            speed = 1.5f;
+            armor = 4;
+            hitSize = 15;
+            drag = 0.065f;
+            accel = 0.1f;
+            rotateSpeed = 6;
+            engineOffset = 6.5f;
+            healAmount = 0.05f;
+            healPercent = 0.025f;
+            flying = true;
+            lowAltitude = true;
+            range = 80;
+            //outlineColor = Color.valueOf("2d2f39"); //Pal.darkOutline
+
+            abilities.add(new RepairFieldAbility(5f, 60f * 5, 50f));
+
+            UnitCommand healCommnand = new UnitCommand("heal", "defense", u -> new HealerAI());
+            defaultCommand = healCommnand;
+            commands = new UnitCommand[]
+            {
+                    UnitCommand.moveCommand,
+                    UnitCommand.assistCommand,
+                    healCommnand
+            };
+
+            constructor = UnitEntity::create;
         }};
     }
 }
