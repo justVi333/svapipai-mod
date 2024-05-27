@@ -37,7 +37,7 @@ public class SvapipaiBlocks
     /*drills*/ stoneCrusher,
     /*production*/ cryofluidFactory,
     /*power nodes*/ strongPowerNode,
-    /*turrets*/ spreader,
+    /*turrets*/ spreader, palladiumBallista,
     /*units*/ complexConstructor;
 
     public static void load()
@@ -205,6 +205,70 @@ public class SvapipaiBlocks
                         }};
                     }}
             );
+
+            requirements(Category.turret, with(
+                    sand,100,
+                    copper,120,
+                    lead,60
+            ));
+        }};
+
+        palladiumBallista = new ItemTurret("palladium-ballista")
+        {{
+            health = 800;
+            size = 3;
+            shake = 0.5f;
+            range = 150;
+            ammoPerShot = 1;
+            inaccuracy = 10;
+            reload = 4;
+            recoil = 2;
+            rotateSpeed = 12;
+            targetAir = false;
+            shootSound = Sounds.flame;
+            ammoUseEffect = Fx.none;
+
+            shoot.shotDelay = 2;
+            shoot.shots = 3;
+
+            ammo
+                    (
+                            sand,  new BasicBulletType(4f, 2) {{
+                                width = 7f;
+                                height = 9f;
+                                lifetime = 65f;
+                                ammoMultiplier = 3;
+                                drag = 0.015f;
+                                knockback = 0.5f;
+                                lightOpacity = 0.01f;
+                                backColor = Color.valueOf("c8a58f");
+                                frontColor = Color.valueOf("ffd9b7");
+                                status = cloggedMechanism;
+                                statusDuration = 120;
+                            }},
+                            scrap,  new BasicBulletType(4f, 2) {{
+                                width = 7f;
+                                height = 9f;
+                                lifetime = 65f;
+                                ammoMultiplier = 3;
+                                drag = 0.0125f;
+                                lightOpacity = 0.01f;
+                                backColor = Color.valueOf("c8a58f");
+                                frontColor = Color.valueOf("ffd9b7");
+
+                                fragBullets = 3;
+                                fragBullet = new BasicBulletType(3f, 2)
+                                {{
+                                    width = 4f;
+                                    height = 6f;
+                                    lifetime = 20f;
+                                    backColor = Color.valueOf("c8a58f");
+                                    frontColor = Color.valueOf("ffd9b7");
+                                    despawnEffect = Fx.none;
+                                    //collidesGround = false;
+                                }};
+                            }}
+                    );
 
             requirements(Category.turret, with(
                     sand,100,
